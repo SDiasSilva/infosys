@@ -10,6 +10,9 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
+
+import controller.ClienteCRUD;
+
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -17,9 +20,10 @@ import java.awt.event.ActionEvent;
 
 public class TelaCadastro extends JFrame {
 	private JLabel lbLogo, lbTitulo;
-	private JButton btGravar, btLimpar;
+	private JButton btGravar, btLimpar, btConsultar;
 	private JPanel contentPane, pnProduto, pnServico, pnTecnico, pnTitulo, pnButtons;
 	private TelaCliente pnCliente;
+	private TelaConsulta telaConsulta;
 	private JTabbedPane tbTela;
 	private String msg;
 	
@@ -90,11 +94,23 @@ public class TelaCadastro extends JFrame {
 		pnButtons.setSize(536, 60);
 		pnButtons.setBorder(null);
 		getContentPane().add(pnButtons);
-		pnButtons.setLayout(new GridLayout(1, 2));
+		pnButtons.setLayout(new GridLayout(1, 3));
 		btGravar = new JButton("Gravar");
-		pnButtons.add(btGravar);
 		btLimpar = new JButton("Limpar");
+		btConsultar = new JButton("Consultar Todos");
+		pnButtons.add(btGravar);
 		pnButtons.add(btLimpar);
+		pnButtons.add(btConsultar);
+		
+		
+		btConsultar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ClienteCRUD clienteCRUD = new ClienteCRUD();
+				telaConsulta = new TelaConsulta(clienteCRUD.consultarClientes());
+				telaConsulta.setVisible(true);
+			}
+		});
+
 
 		btGravar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

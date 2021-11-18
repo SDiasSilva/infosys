@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+
 import controller.ClienteCRUD;
 import model.Cliente;
 
@@ -90,4 +92,5 @@ public class TelaCliente extends JPanel {
 		limparCamposCliente();
 		return clienteCRUD.inserirCliente(new Cliente(nome, cpf, telefone, celular, email));
 	}
+
 }

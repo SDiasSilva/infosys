@@ -1,6 +1,7 @@
 package model;
 
 public class Cliente {
+	private int id;
 	private String nome;
 	private String cpf;
 	private String telefone;
@@ -13,6 +14,22 @@ public class Cliente {
 		setTelefone(telefone);
 		setCelular(celular);
 		setEmail(email);
+	}
+	
+	public Cliente(int id, String nome, String cpf, String telefone, String celular, String email) {
+		setId(id);
+		setNome(nome);
+		setCpf(cpf);
+		setTelefone(telefone);
+		setCelular(celular);
+		setEmail(email);
+	}
+	public int getId() {
+		return this.id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public String getNome() {
