@@ -9,68 +9,93 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.ClienteCRUD;
 import model.Cliente;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class TelaCliente extends JPanel {
+public class PainelInsercao extends JPanel {
 	private JLabel lbCliNome, lbCliCPF, lbCliTelefone, lbCliCelular, lbCliEmail;
 	private JTextField txtCliNome, txtCliCPF, txtCliTelefone, txtCliCelular, txtCliEmail;
+	private JButton btLimpar, btCadastrar;
 	
-	public TelaCliente() {
+	public PainelInsercao() {
 		setLayout(null);
 		lbCliNome = new JLabel("Nome:");
 		lbCliNome.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbCliNome.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbCliNome.setBounds(76, 24, 65, 20);
+		lbCliNome.setBounds(52, 31, 65, 20);
 		add(lbCliNome);
 		
 		lbCliCPF = new JLabel("CPF:");
 		lbCliCPF.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbCliCPF.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbCliCPF.setBounds(76, 50, 65, 20);
+		lbCliCPF.setBounds(52, 57, 65, 20);
 		add(lbCliCPF);
 		
 		lbCliTelefone = new JLabel("Telefone: ");
 		lbCliTelefone.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbCliTelefone.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbCliTelefone.setBounds(76, 75, 65, 20);
+		lbCliTelefone.setBounds(52, 82, 65, 20);
 		add(lbCliTelefone);
 		
 		lbCliCelular = new JLabel("Celular:");
 		lbCliCelular.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbCliCelular.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbCliCelular.setBounds(76, 100, 65, 20);
+		lbCliCelular.setBounds(52, 107, 65, 20);
 		add(lbCliCelular);
 
 		lbCliEmail = new JLabel("E-mail:");
 		lbCliEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbCliEmail.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbCliEmail.setBounds(76, 125, 65, 20);
+		lbCliEmail.setBounds(52, 132, 65, 20);
 		add(lbCliEmail);
 		
 		txtCliNome = new JTextField();
-		txtCliNome.setBounds(148, 25, 251, 20);
+		txtCliNome.setBounds(124, 32, 251, 20);
 		add(txtCliNome);
 		txtCliNome.setColumns(10);
 		txtCliNome.requestFocus();
 
 		txtCliCPF = new JTextField();
-		txtCliCPF.setBounds(148, 50, 251, 20);
+		txtCliCPF.setBounds(124, 57, 251, 20);
 		add(txtCliCPF);
 		txtCliCPF.setColumns(10);
 
 		txtCliTelefone = new JTextField();
-		txtCliTelefone.setBounds(148, 75, 251, 20);
+		txtCliTelefone.setBounds(124, 82, 251, 20);
 		add(txtCliTelefone);
 		txtCliTelefone.setColumns(10);
 
 		txtCliCelular = new JTextField();
-		txtCliCelular.setBounds(148, 100, 251, 20);
+		txtCliCelular.setBounds(124, 107, 251, 20);
 		add(txtCliCelular);
 		txtCliCelular.setColumns(10);
 
 		txtCliEmail = new JTextField();
-		txtCliEmail.setBounds(148, 125, 251, 20);
+		txtCliEmail.setBounds(124, 132, 251, 20);
 		add(txtCliEmail);
 		txtCliEmail.setColumns(10);
+		
+		btLimpar = new JButton("Limpar");
+		btLimpar.setBounds(146, 163, 89, 23);
+		add(btLimpar);
+		
+		btCadastrar = new JButton("Cadastrar");
+		btCadastrar.setBounds(245, 163, 99, 23);
+		add(btCadastrar);
+		
+		btLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limparCamposCliente();
+			}
+		});
+		
+		btCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limparCamposCliente();
+				gravarCliente();
+			}
+		});
 	}
 	
 	public void limparCamposCliente() {
@@ -92,5 +117,4 @@ public class TelaCliente extends JPanel {
 		limparCamposCliente();
 		return clienteCRUD.inserirCliente(new Cliente(nome, cpf, telefone, celular, email));
 	}
-
 }

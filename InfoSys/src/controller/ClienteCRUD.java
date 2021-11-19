@@ -37,16 +37,45 @@ public class ClienteCRUD {
 		return msg;
 	}
 
-	public void alterarCliente(int idCliente) {
+	public String alterarCliente(int idCliente, String coluna, String valor) {
+		String sql = "UPDATE cliente SET "+coluna+" = ? WHERE idCliente = ?";
+		String msg = "";
+		ConexaoDB conexaoDB = new ConexaoDB();
 
+		try {
+			conn = conexaoDB.conectar();
+			this.pstm = conn.prepareStatement(sql);
+			this.pstm.setString(1, valor);
+			this.pstm.setInt(2, idCliente);
+			this.pstm.executeUpdate();
+			msg = "Cliente alterado com sucesso!";
+			conn.close();
+		} catch (SQLException sqlexc) {
+			msg = "Cliente não existe! \nSQL: " + sqlexc;
+		}
+		return msg;
 	}
 
-	public void excluirCliente() {
+	public String excluirCliente(int id) {
+		String sql = "DELETE FROM cliente WHERE idCliente = ?";
+		String msg = "";
+		ConexaoDB conexaoDB = new ConexaoDB();
 
+		try {
+			conn = conexaoDB.conectar();
+			this.pstm = conn.prepareStatement(sql);
+			this.pstm.setInt(1, id);
+			this.pstm.executeUpdate();
+			msg = "Cliente excluído com sucesso!";
+			conn.close();
+		} catch (SQLException sqlexc) {
+			msg = "Cliente não existe! \nSQL: " + sqlexc;
+		}
+		return msg;
 	}
 
 	public Cliente consultarCliente(int id) {
-		String sql = "SELECT * FROM cliente WHERE cdCliente = ?";
+		String sql = "SELECT * FROM cliente WHERE idCliente = ?";
 		Cliente cliente = null;
 		ConexaoDB conexaoDB = new ConexaoDB();
 		ResultSet rs = null;
