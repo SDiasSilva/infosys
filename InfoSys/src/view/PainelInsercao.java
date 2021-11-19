@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -92,8 +93,9 @@ public class PainelInsercao extends JPanel {
 		
 		btCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String msg = gravarCliente();
+				JOptionPane.showMessageDialog(null, msg);
 				limparCamposCliente();
-				gravarCliente();
 			}
 		});
 	}

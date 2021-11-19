@@ -13,7 +13,7 @@ public class ConexaoDB {
 		sgbd = "mysql";
 		server = "localhost";
 		porta = "3306";
-		banco = "infosys";
+		banco = "crud";
 		user = "root";
 		pw = "database";
 		strCnx = "jdbc:" + sgbd + "://" + server + ":" + porta + "/" + banco;

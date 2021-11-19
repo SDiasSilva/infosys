@@ -101,13 +101,14 @@ public class PainelDelecao extends JPanel {
 					lbInfoTelefone.setText(cliente.getTelefone());
 					lbInfoCelular.setText(cliente.getCelular());
 					lbInfoEmail.setText(cliente.getEmail());
+					txtId.setEnabled(false);
+					btResetar.setEnabled(true);
+					btDeletar.setEnabled(true);
+					btConsultar.setEnabled(false);
 				} catch (NumberFormatException exc) {
+					resetar();
 					JOptionPane.showMessageDialog(null, "Digite apenas números!");
 				}
-				txtId.setEnabled(false);
-				btResetar.setEnabled(true);
-				btDeletar.setEnabled(true);
-				btConsultar.setEnabled(false);
 			}
 		});
 		btDeletar.addActionListener(new ActionListener() {
@@ -131,7 +132,7 @@ public class PainelDelecao extends JPanel {
 		lbInfoCpf.setText("");
 		lbInfoTelefone.setText("");
 		lbInfoCelular.setText("");
-		lbInfoCelular.setText("");
+		lbInfoEmail.setText("");
 	}
 
 }
